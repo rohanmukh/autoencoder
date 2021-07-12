@@ -11,9 +11,9 @@ from tensorflow.python.eager.def_function import Function
 
 models=["example1", "example2", "example4"]
 zoo_metadata={
-        "example1": (1, 84, 84, 3, "input_1", "float32"),
-        "example2": (1, 84, 84, 3, "input_1", "float32"),
-        "example4": (1, 84, 84, 3, "input_1", "float32"),
+        "example1": (1, 28, 28, 3, "input_1", "float32"),
+        "example2": (1, 28, 28, 3, "input_1", "float32"),
+        "example4": (1, 28, 28, 3, "input_1", "float32"),
         }
 
 from tensorflow.python.tools.saved_model_utils import get_saved_model_tag_sets

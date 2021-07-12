@@ -49,7 +49,7 @@ class Denoise(Model):
   def __init__(self):
     super(Denoise, self).__init__()
     self.encoder = tf.keras.Sequential([
-      layers.Input(shape=(84, 84, 3)),
+      layers.Input(shape=(28, 28, 3)),
       layers.Conv2D(16, (3, 3), activation='relu', padding='same', strides=2),
       layers.Conv2D(8, (3, 3), activation='relu', padding='same', strides=2)])
 

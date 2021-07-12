@@ -26,6 +26,9 @@ x_train = pickle.load(open('/home/ubuntu/autoencoder/ILSRVC/ilsrvc_data_train.pi
 x_test = pickle.load(open('/home/ubuntu/autoencoder/ILSRVC/ilsrvc_data_test.pickle',
     'rb')).astype('float32')[:100,:,:,:]/255.
 
+
+print(x_train.shape)
+print(x_test.shape)
 latent_dim = 64
 
 class Autoencoder(Model):
@@ -37,8 +40,8 @@ class Autoencoder(Model):
       layers.Dense(latent_dim, activation='relu'),
     ])
     self.decoder = tf.keras.Sequential([
-      layers.Dense(21168, activation='sigmoid'),
-      layers.Reshape((84, 84, 3))
+      layers.Dense(2352, activation='sigmoid'),
+      layers.Reshape((28, 28, 3))
     ])
 
   def call(self, x):

@@ -22,7 +22,7 @@ print('Data Loaded')
 
 
 def preprocess_images(images):
-  images = images.reshape((images.shape[0], 84, 84, 3)).astype('float32')/255.
+  images = images.reshape((images.shape[0], 28, 28, 3)).astype('float32')/255.
   return images #np.where(images > .5, 1.0, 0.0).astype('float32')
 
 train_images = preprocess_images(train_images)
@@ -49,7 +49,7 @@ class CVAE(tf.keras.Model):
     self.latent_dim = latent_dim
     self.encoder = tf.keras.Sequential(
         [
-            tf.keras.layers.InputLayer(input_shape=(84, 84, 3)),
+            tf.keras.layers.InputLayer(input_shape=(28, 28, 3)),
             tf.keras.layers.Conv2D(
                 filters=32, kernel_size=3, strides=(2, 2), activation='relu'),
             tf.keras.layers.Conv2D(
@@ -63,8 +63,8 @@ class CVAE(tf.keras.Model):
     self.decoder = tf.keras.Sequential(
         [
             tf.keras.layers.InputLayer(input_shape=(latent_dim,)),
-            tf.keras.layers.Dense(units=21*21*32, activation=tf.nn.relu),
-            tf.keras.layers.Reshape(target_shape=(21, 21, 32)),
+            tf.keras.layers.Dense(units=7*7*32, activation=tf.nn.relu),
+            tf.keras.layers.Reshape(target_shape=(7, 7, 32)),
             tf.keras.layers.Conv2DTranspose(
                 filters=64, kernel_size=3, strides=2, padding='same',
                 activation='relu'),
